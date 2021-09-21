@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import React,{useState} from 'react'
+import {I18nProvider} from "../src/i18n"
+import {LOCALES} from "../src/i18n"
+import { FormattedMessage } from 'react-intl';
+
 import './App.css';
 
 function App() {
+  const [locale,setLocale]=useState(LOCALES.ENGLISH)
   return (
+    <I18nProvider locale={locale}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={()=>setLocale(LOCALES.ENGLISH)}>English</button>
+      <button onClick={()=> setLocale(LOCALES.NEPALI)}>Nepali</button>
+      <div>
+
+      <FormattedMessage id="name"/>
+      </div>
     </div>
+    </I18nProvider>
   );
 }
 
